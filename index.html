@@ -254,7 +254,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-24 21:32:58" itemprop="dateModified" datetime="2020-04-24T21:32:58+08:00">2020-04-24</time>
+                <time title="Modified: 2020-05-02 18:46:23" itemprop="dateModified" datetime="2020-05-02T18:46:23+08:00">2020-05-02</time>
               </span>
 
           
@@ -275,7 +275,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在上一篇<a href="https://squirrel-explorer.github.io/2020/04/23/%E5%A6%82%E4%BD%95%E7%94%A8clang%20analyzer%E5%AE%9A%E5%88%B6%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E8%A7%84%E5%88%99%EF%BC%881%EF%BC%89%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE%E7%AF%87/">《工程配置篇》</a>里，我们已经了解了如何下载llvm和clang的源码，如何生成Xcode工程并完成编译，现在就开始定制自己的静态分析规则。<br>首先要明确的两点，一是clang自己的build target基本是静态链接的，但我们要做的是独立发布、独立加载的规则库，必须做成动态链接。二是开发静态分析规则，完全依赖clang提供的能力，考虑到开发、调试的方便，规则库工程将被建立在clang工程下。<br>我们实现的机制是应用了clang plugin机制，可参考 <a href="http://clang.llvm.org/docs/ClangPlugins.html" target="_blank" rel="noopener">http://clang.llvm.org/docs/ClangPlugins.html</a> 。具体到静态分析规则开发，可以使用更简单的checker plugin，详细原理会在后面阐述。当然，创建clang工具库，除了plugin，还可以使用clang <a href="https://clang.llvm.org/docs/LibTooling.html" target="_blank" rel="noopener">LibTooling</a>等形式，那只是实现方式的区别，我们根据自己的实际业务场景选择吧。</p>
+          <p>在上一篇<a href="https://squirrel-explorer.github.io/2020/04/23/%E5%A6%82%E4%BD%95%E7%94%A8clang%20analyzer%E5%AE%9A%E5%88%B6%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E8%A7%84%E5%88%99%EF%BC%881%EF%BC%89%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE%E7%AF%87/">《工程配置篇》</a>里，我们已经了解了如何下载 llvm 和 clang 的源码，如何生成 Xcode 工程并完成编译，现在就开始定制自己的静态分析规则。<br>首先要明确的两点，一是 clang 自己的 build target 基本是静态链接的，但我们要做的是独立发布、独立加载的规则库，必须做成动态链接。二是开发静态分析规则，完全依赖 clang 提供的能力，考虑到开发、调试的方便，规则库工程将被建立在 clang 工程下。<br>我们实现的机制是应用了 clang plugin 机制，可参考 <a href="http://clang.llvm.org/docs/ClangPlugins.html" target="_blank" rel="noopener">http://clang.llvm.org/docs/ClangPlugins.html</a> 。具体到静态分析规则开发，可以使用更简单的 checker plugin，详细原理会在后面阐述。当然，创建 clang 工具库，除了 plugin，还可以使用 clang <a href="https://clang.llvm.org/docs/LibTooling.html" target="_blank" rel="noopener">LibTooling</a>等形式，那只是实现方式的区别，我们根据自己的实际业务场景选择吧。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/04/23/%E5%A6%82%E4%BD%95%E7%94%A8clang%20analyzer%E5%AE%9A%E5%88%B6%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90%E8%A7%84%E5%88%99%EF%BC%882%EF%BC%89%E5%88%9B%E5%BB%BA%E5%AE%9A%E5%88%B6%E8%A7%84%E5%88%99%E5%BA%93%E7%AF%87/#more" rel="contents">
